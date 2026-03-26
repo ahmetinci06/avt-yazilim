@@ -47,7 +47,7 @@ git push -u origin feature/görev-adı
 - GitHub'a git → "Compare & pull request" butonuna tıkla
 - **Base branch:** `develop`
 - **Compare branch:** `feature/görev-adı`
-- Açıklama yaz, reviewer olarak @ahmetinci06 ekle
+- Açıklama yaz, reviewer olarak @ahmetinci06 (Aİ) ekle
 - PR açıklamasında PROGRESS.md'deki ilgili görevi referans ver
 
 ### 5. Review Süreci
@@ -85,7 +85,7 @@ Her PR ile birlikte `PROGRESS.md` ve/veya `BUGS.md` güncellenmeli:
 
 | Reviewer | Rol |
 |----------|-----|
-| @ahmetinci06 | Proje Lideri — Final onay |
-| Yaver (AI) | AI CTO — Kod kalitesi & teknik review |
+| @ahmetinci06 (Aİ) | her şeyi yapan adam ☕ — final onay |
+| Yaver (AI CTO) | uyumayan co-founder 🤖 — kod kalitesi & teknik review |
 
 > Sorularınız varsa BUGS.md'ye yazın veya PR comment'inde sorun.

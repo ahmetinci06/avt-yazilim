@@ -75,7 +75,7 @@ docs(progress): CAN bus veri parser - yapılıyor → review bekliyor
 
 ## 📅 Haftalık Özet
 
-> Her Cuma günü ekip lideri bu bölümü günceller.
+> Her Cuma günü ekip sorumlusu bu bölümü günceller.
 
 ### Hafta: [tarih aralığı]
 - **Tamamlanan:**
