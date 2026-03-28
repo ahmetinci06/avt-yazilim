@@ -1,84 +1,66 @@
-# 📊 İlerleme Takibi — avt-yazilim
+# 📊 İlerleme Durumu — AVT Yazılım
 
-> Bu dosya ekip üyelerinin çalışmalarını takip etmek için kullanılır.
-> Her değişiklik PR ile gelir, Ahmet & Yaver tarafından review edilir.
+> Son güncelleme: 2026-03-28
 
-## 📌 Durum Etiketleri
+## ✅ Tamamlanan
 
-| Etiket | Anlam |
-|--------|-------|
-| ✅ Yapıldı | Tamamlandı, test edildi |
-| 🔄 Yapılıyor | Aktif olarak üzerinde çalışılıyor |
-| 💡 Fikir Aşaması | Henüz başlanmadı, planlama/araştırma |
-| 🐛 Debug | Hata ayıklama aşamasında |
-| 🔍 Review Bekliyor | PR açıldı, review bekleniyor |
-| ⏸️ Beklemede | Başka bir şeye bağımlı, bekliyor |
+### VCU Core
+- [x] Pedal okuma + 16x oversampling + wire-break/short detection
+- [x] State machine (OFF → READY → DRIVE → FAULT)
+- [x] FDCAN haberleşme (BMS + motor telemetri)
+- [x] Brake interlock + fault handling
 
----
+### Yerli ESC
+- [x] 6-step hall-sensored BLDC commutation (TIM1 complementary PWM)
+- [x] Pedal→duty mapping + ramp limiter
+- [x] Motor akım ölçümü (ADC DMA)
+- [x] Motor sıcaklık izleme (TMP102 I2C)
+- [x] Overcurrent + overtemperature koruması
+- [x] ESC fault → VCU state machine entegrasyonu
 
-## 🗂️ Görevler
+### Enerji İzleme
+- [x] Batarya güç takibi (V×I, BMS CAN)
+- [x] Trapezoidal integrasyon (Wh birikim)
+- [x] Rejeneratif frenleme enerjisi
+- [x] Hız hesaplama (Hall RPM → km/h)
+- [x] Mesafe takibi (km)
+- [x] Wh/km verimlilik metriki
+- [x] CAN telemetri frame (0x302)
 
-### Telemetri Sistemi
+### Telemetri
+- [x] UART CSV çıkışı (5 Hz, 18 alan)
+- [x] Veri toplama (tüm modüllerden)
 
-| Görev | Sorumlu | Durum | Tarih | Notlar |
-|-------|---------|-------|-------|--------|
-| Gerçek zamanlı veri toplama altyapısı | @username | 💡 Fikir Aşaması | 2026-03-26 | — |
-| CAN bus veri parser | @username | 💡 Fikir Aşaması | 2026-03-26 | — |
-| Wireless veri aktarım protokolü | @username | 💡 Fikir Aşaması | 2026-03-26 | — |
-| Veri loglama & depolama sistemi | @username | 💡 Fikir Aşaması | 2026-03-26 | — |
+## 🚧 Devam Eden
 
-### Veri Analizi & Görselleştirme
+### Donanım Test
+- [ ] CubeMX .ioc güncelleme (TIM1, I2C1, DMA)
+- [ ] Hall pin EXTI interrupt (PA0/PA1/PA2)
+- [ ] Bench test: PWM osiloskop doğrulama
+- [ ] Commutation tablosu motor doğrulama
+- [ ] Enerji ölçüm kalibrasyonu
 
-| Görev | Sorumlu | Durum | Tarih | Notlar |
-|-------|---------|-------|-------|--------|
-| Canlı dashboard telemetri grafikleri | @username | 💡 Fikir Aşaması | 2026-03-26 | — |
-| Yarış sonrası log analiz araçları | @username | 💡 Fikir Aşaması | 2026-03-26 | — |
-| Performans karşılaştırma raporları | @username | 💡 Fikir Aşaması | 2026-03-26 | — |
+### SD Kart Loglama
+- [ ] CubeMX'te SPI/SDIO peripheral
+- [ ] FatFS middleware ekleme
+- [ ] WriteSD() implementasyonu
+- [ ] Circular buffer (60 dk)
 
-### Mobil Uygulama
+## 📋 Planlanan
 
-| Görev | Sorumlu | Durum | Tarih | Notlar |
-|-------|---------|-------|-------|--------|
-| Mobil uygulama UI tasarımı | @username | 💡 Fikir Aşaması | 2026-03-26 | — |
-| Araçtan BT/WiFi veri okuma | @username | 💡 Fikir Aşaması | 2026-03-26 | — |
-| Push bildirim & uyarı sistemi | @username | 💡 Fikir Aşaması | 2026-03-26 | — |
+### Dashboard
+- [ ] Python veya web tabanlı dashboard
+- [ ] UART serial → real-time grafik
+- [ ] Yarış sonrası CSV analiz aracı
 
-### Araç Yazılımı
+### Optimizasyon
+- [ ] Pulse & Glide stratejisi
+- [ ] SOC-based power derating
+- [ ] Optimal hız önerisi
 
-| Görev | Sorumlu | Durum | Tarih | Notlar |
-|-------|---------|-------|-------|--------|
-| VCU üst seviye kontrol yazılımı | @username | 💡 Fikir Aşaması | 2026-03-26 | — |
-| Sürüş modu yöneticisi (eco/sport/race) | @username | 💡 Fikir Aşaması | 2026-03-26 | — |
-| OTA güncelleme mekanizması | @username | 💡 Fikir Aşaması | 2026-03-26 | — |
-| Diagnostik & hata kodları sistemi | @username | 💡 Fikir Aşaması | 2026-03-26 | — |
+## 📅 Takvim
 
----
-
-## 📝 Nasıl Güncellenir?
-
-1. Bu dosyayı kendi branch'inizde düzenleyin
-2. Görevinizin durumunu güncelleyin (etiketleri kullanın)
-3. PR açın → `develop` branch'ine
-4. Review sonrası merge edilir
-
-### Commit Formatı
-```
-docs(progress): görev açıklaması - durum güncellemesi
-```
-
-### Örnek
-```
-docs(progress): CAN bus veri parser - yapılıyor → review bekliyor
-```
-
----
-
-## 📅 Haftalık Özet
-
-> Her Cuma günü ekip sorumlusu bu bölümü günceller.
-
-### Hafta: [tarih aralığı]
-- **Tamamlanan:**
-- **Devam Eden:**
-- **Blocker'lar:**
-- **Gelecek Hafta Planı:**
+| Tarih | Deliverable |
+|-------|-------------|
+| Jul 7, 2026 | Teknik Tasarım Raporu |
+| Aug 24-31, 2026 | Yarış Haftası |
